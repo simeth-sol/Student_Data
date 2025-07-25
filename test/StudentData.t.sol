@@ -12,20 +12,20 @@ contract StudentDataTest is Test {
     }
 
     function testInitialValues() public view {
-        (string memory name, uint age) = studentdata.getStudent();
+        (string memory name, uint256 age) = studentdata.getStudent();
         assertEq(name, "Simon");
         assertEq(age, 28);
     }
 
     function testUpdateAge() public {
         studentdata.updateAge(35);
-        (, uint updatedAge) = studentdata.getStudent();
+        (, uint256 updatedAge) = studentdata.getStudent();
         assertEq(updatedAge, 35);
     }
 
-    function testFuzz_UpdateAge(uint newAge) public {
+    function testFuzz_UpdateAge(uint256 newAge) public {
         studentdata.updateAge(newAge);
-        (, uint updatedAge) = studentdata.getStudent();
+        (, uint256 updatedAge) = studentdata.getStudent();
         assertEq(updatedAge, newAge);
     }
 }
